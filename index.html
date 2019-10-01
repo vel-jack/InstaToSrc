@@ -1,32 +1,56 @@
-
-
 <!DOCTYPE html>
 <html>
    <head>
       <title>InstaToSrc</title>
+      <style>
+         input[type=text]{
+         padding: 12px 20px;
+         margin: 8px 0;
+         display: inline-block;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         box-sizing: border-box;
+         }
+         input[type=button] {
+         background-color: #1f4f5f;
+         color: white;
+         padding: 14px 20px;
+         margin: 8px 0;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         }
+         div {
+         border-radius: 5px;
+         background-color: #f2f2f2;
+         padding: 20px;
+         }
+      </style>
    </head>
    <body>
       <!-- ✅ 📋 -->
       <h3>Insta Url</h3>
-      <input type="text" id="instaSrc" placeholder="Paste Insta Video Url" value="https://www.instagram.com/p/B3FCGx0BEZX/"/>
-      <button onclick="generateUrl()">Generate</button>
-      <br>
-      <br>
-      <img alt="🙈" style="width:200px" id="prevImg"/>
-      <br>
-      <br>
-      <input type="text" id="titleText" placeholder="Title/Description"/>
-      <input type="button" id="titleButt" value="📋" onclick="copyTitle()"/>
-      <br>
-      <br>
-      <input type="text" id="imageUrl" placeholder="Image/thumbnail url"/>
-      <input type="button" id="imageButt" value="📋" onclick="copyImage()"/>
-      <br>
-      <br>
-      <input type="text" id="videoUrl" placeholder="Video Url"/>
-      <input type="button" id="videoButt" value="📋" onclick="copyVideo()"/>
-      <br>
-      <p id="mesg"></p>
+      <div>
+         <input type="text" id="instaSrc" placeholder="Paste Insta Video Url" value="https://www.instagram.com/p/B3FCGx0BEZX/"/>
+         <input type="button" onclick="generateUrl()" value="Gererate"/>
+         <br>
+         <br>
+         <img alt="🙈" style="width:200px" id="prevImg"/>
+         <br>
+         <br>
+         <input type="text" id="titleText" placeholder="Title/Description"/>
+         <input type="button" id="titleButt" value="📋" onclick="copyTitle()"/>
+         <br>
+         <br>
+         <input type="text" id="imageUrl" placeholder="Image/thumbnail url"/>
+         <input type="button" id="imageButt" value="📋" onclick="copyImage()"/>
+         <br>
+         <br>
+         <input type="text" id="videoUrl" placeholder="Video Url"/>
+         <input type="button" id="videoButt" value="📋" onclick="copyVideo()"/>
+         <br>
+         <p id="mesg"></p>
+      </div>
       <script>
          var c = document.getElementById("instaSrc").value;
          function generateUrl(){
