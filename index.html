@@ -21,7 +21,6 @@
          cursor: pointer;
          }
          div {
-         width:50%;
          border-radius: 5px;
          background-color: #f2f2f2;
          padding: 20px;
@@ -53,8 +52,10 @@
          <p id="mesg"></p>
       </div>
       <script>
-         var c = document.getElementById("instaSrc").value;
+      
          function generateUrl(){
+                  var c = document.getElementById("instaSrc").value;
+
             	var obj = JSON.parse(httpGet(c+"?__a=1"));
                 if(obj.graphql.shortcode_media.is_video){
                 document.getElementById("prevImg").src = obj.graphql.shortcode_media.thumbnail_src
@@ -101,6 +102,7 @@
               document.execCommand("copy");
               document.getElementById("mesg").innerHTML = "<span style='color:#00aa00'> Video Link Copied </span>";
               document.getElementById("videoButt").value = "✅";
+              
             }
       </script>
    </body>
