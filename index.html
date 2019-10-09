@@ -65,7 +65,7 @@
   		if(li != -1){
   			c = c.substring(0, li);
   		}
-        document.getElementById("mesg").innerHTML = c
+        //document.getElementById("mesg").innerHTML = c
         var obj = JSON.parse(httpGet(c + "?__a=1"));
         if (obj.graphql.shortcode_media.is_video) {
           document.getElementById("prevImg").src = obj.graphql.shortcode_media.thumbnail_src
