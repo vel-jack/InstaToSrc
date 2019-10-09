@@ -38,7 +38,8 @@
     <h3>Insta Url</h3>
     <div>
       <input type="text" id="instaSrc" placeholder="Paste Insta Video Url" />
-      <input type="button" onclick="generateUrl()" value="Gererate" />
+      <input type="button" onclick="generateUrl()" value="Gererate" >
+      <a href="#" id="genButton" download><input type="button" value="Download"></a>
       <br>
       <br>
       <img style="width:200px" id="prevImg" src="http://pngimg.com/uploads/instagram/instagram_PNG11.png"/>
@@ -60,7 +61,11 @@
     <script>
       function generateUrl() {
         var c = document.getElementById("instaSrc").value;
-
+        var li = c.indexOf("?")
+  		if(li != -1){
+  			c = c.substring(0, li);
+  		}
+        document.getElementById("mesg").innerHTML = c
         var obj = JSON.parse(httpGet(c + "?__a=1"));
         if (obj.graphql.shortcode_media.is_video) {
           document.getElementById("prevImg").src = obj.graphql.shortcode_media.thumbnail_src
@@ -68,7 +73,13 @@
           document.getElementById("imageUrl").value = obj.graphql.shortcode_media.thumbnail_src
           document.getElementById("videoUrl").value = obj.graphql.shortcode_media.video_url
           document.getElementById("mesg").innerHTML = "<span style='color:#00aa00'> Link Ready Bruh! </span>";
-
+          
+          
+          //btn.href = obj.graphql.shortcode_media.video_url
+          var downloadBtn = document.getElementById("genButton");
+          downloadBtn.href = obj.graphql.shortcode_media.video_url
+          
+          
         } else {
           document.getElementById("mesg").innerHTML = "<span style='color:#ff0000'> Oh use video post </span>";
         }
@@ -111,7 +122,8 @@
         document.getElementById("mesg").innerHTML = "<span style='color:#00aa00'> Video Link Copied </span>";
         document.getElementById("videoButt").value = "✅";
       }
-
+      
+// https://www.instagram.com/p/B3U4j4yhNlp/
     </script>
   </body>
 
