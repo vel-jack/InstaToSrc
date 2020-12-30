@@ -4,6 +4,7 @@
         <title>Insta Content</title>
     </head>
 	<body>
+		<pre><pre>
 		<script>
 			var q = window.location.search;
 			const uP = new URLSearchParams(q);
@@ -22,7 +23,8 @@
 					var image = obj.graphql.shortcode_media.thumbnail_src
 					var owner = obj.graphql.shortcode_media.owner.username
 					var content ='{"username":"'+owner+'","image":"'+image+'","video":"'+video+'","description":"'+dsc+'"}';
- document.write('<p>{"result":' + content + '}</p>');				}
+					document.getElementsByTagName("pre")[0].innerHTML = "result": + content 
+ //document.write('<p>{"result":' + content + '}</p>');				}
 			}
 			else{
 var content = '{"username":"0","image":"0","video":"0","description":"0"}';
