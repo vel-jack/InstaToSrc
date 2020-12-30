@@ -1,44 +1,40 @@
+
 <html>
-
-<head>
-
-</head>
-
-<body>
-    <script>
-        var q = window.location.search;
-        const uP = new URLSearchParams(q);
-        if (uP.has('url')) {
-            var instaUrl = uP.get('url');
-            console.log(instaUrl);
-            var li = instaUrl.indexOf("?")
-            if (li != -1) {
-                instaUrl = instaUrl.substring(0, li);
-            }
-            console.log(instaUrl);
-            var obj = JSON.parse(httpGet(instaUrl + "?__a=1"));
-            if (obj.graphql.shortcode_media.is_video) {
-                var dsc = obj.graphql.shortcode_media.edge_media_to_caption.edges[0].node.text
-                var video = obj.graphql.shortcode_media.video_url
-                var image = obj.graphql.shortcode_media.thumbnail_src
-                var owner = obj.graphql.shortcode_media.owner.username
-                var content = '{"username":"' + owner + '","image":"' + image + '","video":"' + video + '","description":"' + dsc + '"}';
-                document.write('<p>{"result":' + content + '}</p>');
-            }
-        } else {
-            var content = '{"username":"0","image":"0","video":"0","description":"0"}';
-            document.write('<p>{"result":' + content + '}</p>');
-        }
-        
-        function httpGet(theUrl) {
-            var xmlHttp = null;
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", theUrl, false);
-            xmlHttp.send(null);
-            return xmlHttp.responseText;
-        }
-        			// https://www.instagram.com/p/CIL82PwnF8u/
-    </script>
-</body>
-
+    <head>
+        <title>Insta Content</title>
+    </head>
+	<body>
+		<script>
+			var q = window.location.search;
+			const uP = new URLSearchParams(q);
+			if(uP.has('url')){
+				var instaUrl = uP.get('url');
+				console.log(instaUrl);
+				var li = instaUrl.indexOf("?")
+				if(li != -1){
+					instaUrl = instaUrl.substring(0, li);
+				}
+				console.log(instaUrl);
+				var obj = JSON.parse(httpGet(instaUrl + "?__a=1"));
+				if (obj.graphql.shortcode_media.is_video) {
+					var dsc = obj.graphql.shortcode_media.edge_media_to_caption.edges[0].node.text
+					var video = obj.graphql.shortcode_media.video_url
+					var image = obj.graphql.shortcode_media.thumbnail_src
+					var owner = obj.graphql.shortcode_media.owner.username
+					var content ='{"username":"'+owner+'","image":"'+image+'","video":"'+video+'","description":"'+dsc+'"}';
+ document.write('<p>{"result":' + content + '}</p>');				}
+			}
+			else{
+var content = '{"username":"0","image":"0","video":"0","description":"0"}';
+            document.write('<p>{"result":' + content + '}</p>');			}
+			function httpGet(theUrl){
+				var xmlHttp = null;
+				xmlHttp = new XMLHttpRequest();
+				xmlHttp.open("GET", theUrl, false);
+				xmlHttp.send(null);
+				return xmlHttp.responseText;
+			}
+			// https://www.instagram.com/p/CIL82PwnF8u/
+		</script>
+	</body>
 </html>
