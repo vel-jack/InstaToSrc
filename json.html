@@ -25,7 +25,7 @@
          		var image = obj.graphql.shortcode_media.thumbnail_src
          		var owner = obj.graphql.shortcode_media.owner.username
          		var content ='{"username":"'+owner+'","image":"'+image+'","video":"'+video+'","description":"'+dsc+'"}';
-         		document.getElementsByTagName("pre")[0].innerHTML = "result": + content ;
+         		document.getElementsByTagName("pre")[0].innerHTML = "\"result\":\"" + content +"\"";
             }
          }
          function httpGet(theUrl){
