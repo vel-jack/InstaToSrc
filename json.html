@@ -26,11 +26,8 @@
          		var owner = obj.graphql.shortcode_media.owner.username
          		var content ='{"username":"'+owner+'","image":"'+image+'","video":"'+video+'","description":"'+dsc+'"}';
          		document.getElementsByTagName("pre")[0].innerHTML = "result": + content 
-         //document.write('<p>{"result":' + content + '}</p>');				}
+            }
          }
-         //else{
-         //var content = '{"username":"0","image":"0","video":"0","description":"0"}';
-         //  document.write('<p>{"result":' + content + '}</p>');			}
          function httpGet(theUrl){
          	var xmlHttp = null;
          	xmlHttp = new XMLHttpRequest();
